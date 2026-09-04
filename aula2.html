@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 2 – Estruturas Condicionais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo"><span>◈ JAVA.CORE</span></div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="aula1.html">Aula 1</a>
+        <a href="aula2.html">Aula 2</a>
+        <a href="aula3.html">Aula 3</a>
+        <a href="aula4.html">Aula 4</a>
+        <a href="como-executar.html">Como Executar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="badge">AULA 02 • 120 MIN</span>
+      <h1>Estruturas de Controle Condicionais</h1>
+      <p style="color: var(--text-secondary); max-width: 700px; margin: 12px auto 0;">
+        if, if-else, else-if, operadores relacionais e lógicos.  
+        Como o programa toma decisões.
+      </p>
+    </div>
+
+    <section class="section objectives">
+      <h2>Objetivos da Aula</h2>
+      <ul>
+        <li>Entender e aplicar <span class="inline-code">if</span>, <span class="inline-code">if-else</span> e <span class="inline-code">else-if</span></li>
+        <li>Usar operadores relacionais e lógicos corretamente</li>
+        <li>Resolver problemas com decisões simples e compostas</li>
+        <li>Conhecer o operador ternário (introdução)</li>
+      </ul>
+    </section>
+
+    <section class="section timeline">
+      <h2>Cronograma Sugerido (120 min)</h2>
+      <table>
+        <thead>
+          <tr><th>Tempo</th><th>Atividade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0–10 min</td><td>Revisão rápida da Aula 1</td></tr>
+          <tr><td>10–25 min</td><td>Operadores relacionais e lógicos</td></tr>
+          <tr><td>25–45 min</td><td>Estrutura if e if-else com exemplos</td></tr>
+          <tr><td>45–60 min</td><td><strong>Prática 1</strong>: positivo / negativo / zero</td></tr>
+          <tr><td>60–80 min</td><td>else-if e aninhamento</td></tr>
+          <tr><td>80–100 min</td><td><strong>Prática 2</strong>: classificação de notas + triângulo</td></tr>
+          <tr><td>100–110 min</td><td>Operador ternário (introdução)</td></tr>
+          <tr><td>110–120 min</td><td><strong>Prática 3 (desafio)</strong> + fechamento</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>1. Operadores Relacionais e Lógicos</h2>
+      <p><strong>Relacionais</strong> (comparam valores e retornam <span class="inline-code">true</span> ou <span class="inline-code">false</span>):</p>
+      <table>
+        <thead>
+          <tr><th>Operador</th><th>Significado</th><th>Exemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="inline-code">==</span></td><td>Igual a</td><td>x == 10</td></tr>
+          <tr><td><span class="inline-code">!=</span></td><td>Diferente de</td><td>x != 0</td></tr>
+          <tr><td><span class="inline-code">&gt;</span></td><td>Maior que</td><td>idade &gt; 18</td></tr>
+          <tr><td><span class="inline-code">&lt;</span></td><td>Menor que</td><td>nota &lt; 7</td></tr>
+          <tr><td><span class="inline-code">&gt;=</span></td><td>Maior ou igual</td><td>x &gt;= 0</td></tr>
+          <tr><td><span class="inline-code">&lt;=</span></td><td>Menor ou igual</td><td>y &lt;= 100</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 20px;"><strong>Lógicos</strong> (combinam condições):</p>
+      <table>
+        <thead>
+          <tr><th>Operador</th><th>Significado</th><th>Exemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="inline-code">&&</span></td><td>E (AND)</td><td>idade &gt;= 18 && temCarteira</td></tr>
+          <tr><td><span class="inline-code">||</span></td><td>OU (OR)</td><td>nota &gt;= 7 || recuperacao</td></tr>
+          <tr><td><span class="inline-code">!</span></td><td>NÃO (NOT)</td><td>!chovendo</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>2. Estrutura if / if-else</h2>
+<pre><code>int idade = 20;
+
+if (idade >= 18) {
+    System.out.println("Maior de idade");
+} else {
+    System.out.println("Menor de idade");
+}</code></pre>
+      <p>O bloco dentro do <span class="inline-code">if</span> só é executado se a condição for verdadeira.</p>
+    </section>
+
+    <section class="section">
+      <h2>3. Encadeamento else-if</h2>
+<pre><code>double media = 8.5;
+
+if (media >= 9.0) {
+    System.out.println("Conceito A");
+} else if (media >= 7.0) {
+    System.out.println("Conceito B");
+} else if (media >= 5.0) {
+    System.out.println("Conceito C");
+} else {
+    System.out.println("Conceito D");
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>4. Operador Ternário (introdução)</h2>
+      <p>Forma compacta de if-else para atribuições simples:</p>
+<pre><code>int idade = 17;
+String status = (idade >= 18) ? "Maior" : "Menor";
+System.out.println(status);</code></pre>
+    </section>
+
+    <!-- Exercícios -->
+    <section class="section">
+      <h2>Exercícios Práticos</h2>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 1 – Positivo, Negativo ou Zero</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>Leia um número inteiro e diga se ele é positivo, negativo ou zero.</p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class PositivoNegativo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número: ");
+        int n = sc.nextInt();
+
+        if (n > 0) {
+            System.out.println("Positivo");
+        } else if (n < 0) {
+            System.out.println("Negativo");
+        } else {
+            System.out.println("Zero");
+        }
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 2 – Classificação de Notas</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          Leia uma nota (0 a 10) e classifique:<br>
+          A (≥ 9), B (≥ 7), C (≥ 5), D (≥ 3), F (&lt; 3)
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class ClassificacaoNota {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nota (0-10): ");
+        double nota = sc.nextDouble();
+
+        if (nota >= 9) {
+            System.out.println("Conceito A");
+        } else if (nota >= 7) {
+            System.out.println("Conceito B");
+        } else if (nota >= 5) {
+            System.out.println("Conceito C");
+        } else if (nota >= 3) {
+            System.out.println("Conceito D");
+        } else {
+            System.out.println("Conceito F");
+        }
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 3 – Desafio: Tipo de Triângulo</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          Leia três lados de um triângulo e diga se é Equilátero (todos iguais), 
+          Isósceles (dois iguais) ou Escaleno (todos diferentes).  
+          Considere que os valores formam um triângulo válido.
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class TipoTriangulo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Lado A: ");
+        double a = sc.nextDouble();
+        System.out.print("Lado B: ");
+        double b = sc.nextDouble();
+        System.out.print("Lado C: ");
+        double c = sc.nextDouble();
+
+        if (a == b && b == c) {
+            System.out.println("Equilátero");
+        } else if (a == b || b == c || a == c) {
+            System.out.println("Isósceles");
+        } else {
+            System.out.println("Escaleno");
+        }
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <div class="lesson-nav">
+      <a href="aula1.html" class="nav-btn">← Aula Anterior</a>
+      <a href="aula3.html" class="nav-btn">Próxima Aula →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Aula 2 de 4 • Algoritmos e Introdução à Programação Java</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

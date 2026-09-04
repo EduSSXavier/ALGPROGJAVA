@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 3 – Repetição com While</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo"><span>◈ JAVA.CORE</span></div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="aula1.html">Aula 1</a>
+        <a href="aula2.html">Aula 2</a>
+        <a href="aula3.html">Aula 3</a>
+        <a href="aula4.html">Aula 4</a>
+        <a href="como-executar.html">Como Executar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="badge">AULA 03 • 120 MIN</span>
+      <h1>Estruturas de Repetição – While</h1>
+      <p style="color: var(--text-secondary); max-width: 700px; margin: 12px auto 0;">
+        while e do-while. Contadores, acumuladores e validação de entrada.
+      </p>
+    </div>
+
+    <section class="section objectives">
+      <h2>Objetivos da Aula</h2>
+      <ul>
+        <li>Compreender o conceito de laço, contador e acumulador</li>
+        <li>Dominar o <span class="inline-code">while</span> e o <span class="inline-code">do-while</span></li>
+        <li>Evitar loops infinitos</li>
+        <li>Resolver problemas de contagem, somatório e validação de entrada</li>
+      </ul>
+    </section>
+
+    <section class="section timeline">
+      <h2>Cronograma Sugerido (120 min)</h2>
+      <table>
+        <thead>
+          <tr><th>Tempo</th><th>Atividade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0–10 min</td><td>Revisão de condicionais</td></tr>
+          <tr><td>10–25 min</td><td>Conceito de repetição, contador e acumulador</td></tr>
+          <tr><td>25–45 min</td><td>Estrutura while – sintaxe e exemplos</td></tr>
+          <tr><td>45–60 min</td><td><strong>Prática 1</strong>: contar e somar</td></tr>
+          <tr><td>60–80 min</td><td>do-while e validação de entrada</td></tr>
+          <tr><td>80–100 min</td><td><strong>Prática 2</strong>: menu + validação de nota</td></tr>
+          <tr><td>100–110 min</td><td>Cuidados com loops infinitos</td></tr>
+          <tr><td>110–120 min</td><td><strong>Prática 3 (desafio)</strong> + revisão</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>1. Conceito de Laço</h2>
+      <p>
+        Um <strong>laço</strong> (loop) permite executar um bloco de código várias vezes enquanto uma condição for verdadeira.
+      </p>
+      <p>
+        • <strong>Contador</strong>: variável que controla quantas vezes o laço executa (ex: i = i + 1)<br>
+        • <strong>Acumulador</strong>: variável que vai guardando um total (ex: soma = soma + valor)
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>2. Estrutura while</h2>
+      <p>O teste da condição acontece <strong>antes</strong> de entrar no bloco:</p>
+<pre><code>int i = 1;
+while (i <= 5) {
+    System.out.println(i);
+    i++;          // atualização do contador (importante!)
+}</code></pre>
+      <p>Saída: 1 2 3 4 5</p>
+      <p style="margin-top: 12px; color: var(--neon-pink);">
+        ⚠ Se esquecer de atualizar a variável de controle → loop infinito!
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>3. Estrutura do-while</h2>
+      <p>O bloco é executado <strong>pelo menos uma vez</strong>, e o teste acontece no final:</p>
+<pre><code>Scanner sc = new Scanner(System.in);
+int opcao;
+
+do {
+    System.out.println("1 - Continuar");
+    System.out.println("0 - Sair");
+    System.out.print("Opção: ");
+    opcao = sc.nextInt();
+} while (opcao != 0);
+
+System.out.println("Programa encerrado.");</code></pre>
+      <p>Muito usado para menus e validação de entrada.</p>
+    </section>
+
+    <section class="section">
+      <h2>4. Exemplo: Soma dos números de 1 a N</h2>
+<pre><code>Scanner sc = new Scanner(System.in);
+System.out.print("Digite N: ");
+int n = sc.nextInt();
+
+int soma = 0;
+int i = 1;
+
+while (i <= n) {
+    soma = soma + i;
+    i++;
+}
+
+System.out.println("Soma = " + soma);</code></pre>
+    </section>
+
+    <!-- Exercícios -->
+    <section class="section">
+      <h2>Exercícios Práticos</h2>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 1 – Contagem e Somatório</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          Leia um número N e imprima todos os números de 1 até N.  
+          Ao final, mostre a soma desses números.
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class ContagemSoma {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite N: ");
+        int n = sc.nextInt();
+
+        int soma = 0;
+        int i = 1;
+
+        while (i <= n) {
+            System.out.print(i + " ");
+            soma += i;
+            i++;
+        }
+        System.out.println("\nSoma = " + soma);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 2 – Validação de Nota</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          Peça uma nota ao usuário. Enquanto a nota não estiver entre 0 e 10 (inclusive), 
+          peça novamente. Quando for válida, imprima “Nota aceita: X”.
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class ValidaNota {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double nota;
+
+        do {
+            System.out.print("Digite uma nota (0 a 10): ");
+            nota = sc.nextDouble();
+            if (nota < 0 || nota > 10) {
+                System.out.println("Nota inválida! Tente novamente.");
+            }
+        } while (nota < 0 || nota > 10);
+
+        System.out.println("Nota aceita: " + nota);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 3 – Desafio: Jogo de Adivinhação</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          O programa “pensa” em um número secreto (pode ser fixo, ex: 7).  
+          O usuário tenta adivinhar. Enquanto errar, o programa diz “Tente novamente”.  
+          Quando acertar, mostra quantas tentativas foram necessárias.
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class Adivinhacao {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int secreto = 7;
+        int tentativas = 0;
+        int palpite;
+
+        do {
+            System.out.print("Adivinhe o número (1-10): ");
+            palpite = sc.nextInt();
+            tentativas++;
+
+            if (palpite != secreto) {
+                System.out.println("Tente novamente!");
+            }
+        } while (palpite != secreto);
+
+        System.out.println("Parabéns! Você acertou em " + tentativas + " tentativa(s).");
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <div class="lesson-nav">
+      <a href="aula2.html" class="nav-btn">← Aula Anterior</a>
+      <a href="aula4.html" class="nav-btn">Próxima Aula →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Aula 3 de 4 • Algoritmos e Introdução à Programação Java</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

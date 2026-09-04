@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 4 – Repetição com For</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo"><span>◈ JAVA.CORE</span></div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="aula1.html">Aula 1</a>
+        <a href="aula2.html">Aula 2</a>
+        <a href="aula3.html">Aula 3</a>
+        <a href="aula4.html">Aula 4</a>
+        <a href="como-executar.html">Como Executar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="badge">AULA 04 • 120 MIN</span>
+      <h1>Estruturas de Repetição – For</h1>
+      <p style="color: var(--text-secondary); max-width: 700px; margin: 12px auto 0;">
+        Estrutura for, laços aninhados, padrões e comparação com while.
+      </p>
+    </div>
+
+    <section class="section objectives">
+      <h2>Objetivos da Aula</h2>
+      <ul>
+        <li>Dominar a estrutura <span class="inline-code">for</span> (inicialização, condição, incremento)</li>
+        <li>Comparar <span class="inline-code">for</span> × <span class="inline-code">while</span></li>
+        <li>Usar <span class="inline-code">for</span> aninhado (tabelas e padrões)</li>
+        <li>Resolver problemas clássicos de laços</li>
+      </ul>
+    </section>
+
+    <section class="section timeline">
+      <h2>Cronograma Sugerido (120 min)</h2>
+      <table>
+        <thead>
+          <tr><th>Tempo</th><th>Atividade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0–10 min</td><td>Revisão rápida de while / do-while</td></tr>
+          <tr><td>10–30 min</td><td>Estrutura for – sintaxe e variações</td></tr>
+          <tr><td>30–50 min</td><td><strong>Prática 1</strong>: tabuada e soma</td></tr>
+          <tr><td>50–70 min</td><td>for aninhado – tabelas e padrões</td></tr>
+          <tr><td>70–90 min</td><td><strong>Prática 2</strong>: triângulo de asteriscos + tabuada completa</td></tr>
+          <tr><td>90–105 min</td><td>Comparação for × while × do-while</td></tr>
+          <tr><td>105–120 min</td><td><strong>Prática 3 (desafio final)</strong> + fechamento da unidade</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>1. Estrutura for</h2>
+      <p>Ideal quando sabemos quantas vezes o laço deve repetir:</p>
+<pre><code>for (inicialização; condição; incremento) {
+    // bloco
+}</code></pre>
+      <p>Exemplo clássico:</p>
+<pre><code>for (int i = 1; i <= 5; i++) {
+    System.out.println(i);
+}</code></pre>
+      <p>
+        • <span class="inline-code">int i = 1</span> → inicialização<br>
+        • <span class="inline-code">i <= 5</span> → condição (enquanto for verdadeira)<br>
+        • <span class="inline-code">i++</span> → incremento (executado no final de cada volta)
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>2. Variações úteis</h2>
+<pre><code>// Contagem regressiva
+for (int i = 10; i >= 1; i--) {
+    System.out.print(i + " ");
+}
+
+// Passo 2 (só pares)
+for (int i = 0; i <= 10; i += 2) {
+    System.out.print(i + " ");
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>3. for aninhado</h2>
+      <p>Um for dentro de outro é muito usado para tabelas e padrões:</p>
+<pre><code>// Tabuada completa de 1 a 5
+for (int i = 1; i <= 5; i++) {
+    for (int j = 1; j <= 10; j++) {
+        System.out.printf("%d x %d = %d%n", i, j, i * j);
+    }
+    System.out.println("-------------");
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>4. Comparação rápida</h2>
+      <table>
+        <thead>
+          <tr><th>Estrutura</th><th>Quando usar</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="inline-code">for</span></td><td>Número de repetições conhecido</td></tr>
+          <tr><td><span class="inline-code">while</span></td><td>Condição mais complexa ou número desconhecido</td></tr>
+          <tr><td><span class="inline-code">do-while</span></td><td>Precisa executar pelo menos uma vez (menus, validação)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Exercícios -->
+    <section class="section">
+      <h2>Exercícios Práticos</h2>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 1 – Tabuada de um número</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>Leia um número inteiro e imprima a sua tabuada de 1 a 10 usando <span class="inline-code">for</span>.</p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class Tabuada {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número: ");
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.printf("%d x %d = %d%n", n, i, n * i);
+        }
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 2 – Triângulo de Asteriscos</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          Leia um número N e imprima um triângulo de asteriscos com N linhas:<br>
+          *<br>
+          **<br>
+          ***<br>
+          ****
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class Triangulo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Número de linhas: ");
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-header">
+          <span class="exercise-title">Exercício 3 – Desafio: Fatorial</span>
+          <button class="toggle-btn">Mostrar Resposta</button>
+        </div>
+        <p>
+          Leia um número inteiro N (≥ 0) e calcule o seu fatorial (N!).  
+          Exemplo: 5! = 5 × 4 × 3 × 2 × 1 = 120
+        </p>
+        <div class="answer">
+          <span class="answer-label">Solução sugerida</span>
+<pre><code>import java.util.Scanner;
+
+public class Fatorial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite N: ");
+        int n = sc.nextInt();
+
+        long fatorial = 1;
+        for (int i = 1; i <= n; i++) {
+            fatorial *= i;
+        }
+
+        System.out.println(n + "! = " + fatorial);
+        sc.close();
+    }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <div class="lesson-nav">
+      <a href="aula3.html" class="nav-btn">← Aula Anterior</a>
+      <a href="index.html" class="nav-btn">Menu Principal →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Aula 4 de 4 • Algoritmos e Introdução à Programação Java</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

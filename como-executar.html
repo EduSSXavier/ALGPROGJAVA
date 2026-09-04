@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Executar Programas Java</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo"><span>◈ JAVA.CORE</span></div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="aula1.html">Aula 1</a>
+        <a href="aula2.html">Aula 2</a>
+        <a href="aula3.html">Aula 3</a>
+        <a href="aula4.html">Aula 4</a>
+        <a href="como-executar.html">Como Executar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="badge">TUTORIAL • GUIA RÁPIDO</span>
+      <h1>Como Executar um Programa Java</h1>
+      <p style="color: var(--text-secondary); max-width: 700px; margin: 12px auto 0;">
+        Guia prático para rodar seus códigos em Windows, Linux e diretamente no navegador.
+      </p>
+    </div>
+
+    <!-- Introdução -->
+    <section class="section">
+      <h2>Antes de começar</h2>
+      <p>
+        Para executar um programa Java você precisa de:
+      </p>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="padding-left: 28px; position: relative; margin-bottom: 8px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          O <strong>JDK</strong> (Java Development Kit) instalado — contém o compilador (<span class="inline-code">javac</span>) e a máquina virtual (<span class="inline-code">java</span>)
+        </li>
+        <li style="padding-left: 28px; position: relative; margin-bottom: 8px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          Um editor de texto ou IDE (Bloco de Notas, VS Code, IntelliJ…)
+        </li>
+        <li style="padding-left: 28px; position: relative; margin-bottom: 8px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          Ou, se preferir, um ambiente online (sem instalar nada)
+        </li>
+      </ul>
+      <p style="margin-top: 16px;">
+        Recomendamos o <strong>JDK 17</strong> ou superior (LTS). Download oficial:
+        <a href="https://adoptium.net/" target="_blank" rel="noopener">adoptium.net</a>
+      </p>
+    </section>
+
+    <!-- Windows -->
+    <section class="section">
+      <h2>1. Windows</h2>
+
+      <h3>Passo 1 – Instalar o JDK</h3>
+      <p>
+        1. Acesse <a href="https://adoptium.net/" target="_blank" rel="noopener">adoptium.net</a><br>
+        2. Baixe a versão para Windows (x64)<br>
+        3. Execute o instalador e marque a opção de adicionar o Java ao <span class="inline-code">PATH</span>
+      </p>
+
+      <h3>Passo 2 – Verificar a instalação</h3>
+      <p>Abra o <strong>Prompt de Comando</strong> (cmd) ou o PowerShell e digite:</p>
+<pre><code>java -version
+javac -version</code></pre>
+      <p>Se aparecer a versão, está tudo certo.</p>
+
+      <h3>Passo 3 – Criar e executar o programa</h3>
+      <p>1. Crie um arquivo chamado <span class="inline-code">OlaMundo.java</span> com o conteúdo:</p>
+<pre><code>public class OlaMundo {
+    public static void main(String[] args) {
+        System.out.println("Olá, Mundo!");
+    }
+}</code></pre>
+      <p>2. No terminal, navegue até a pasta do arquivo:</p>
+<pre><code>cd C:\caminho\para\a\pasta</code></pre>
+      <p>3. Compile:</p>
+<pre><code>javac OlaMundo.java</code></pre>
+      <p>4. Execute:</p>
+<pre><code>java OlaMundo</code></pre>
+      <p>Pronto! A mensagem “Olá, Mundo!” deve aparecer no terminal.</p>
+
+      <h3>Dica – Usando VS Code</h3>
+      <p>
+        Instale a extensão <strong>Extension Pack for Java</strong>.  
+        Depois é só abrir a pasta, criar o arquivo <span class="inline-code">.java</span> e clicar em “Run”.
+      </p>
+    </section>
+
+    <!-- Linux -->
+    <section class="section">
+      <h2>2. Linux</h2>
+
+      <h3>Passo 1 – Instalar o JDK</h3>
+      <p>No terminal (Ubuntu/Debian):</p>
+<pre><code>sudo apt update
+sudo apt install openjdk-17-jdk</code></pre>
+      <p>No Fedora:</p>
+<pre><code>sudo dnf install java-17-openjdk-devel</code></pre>
+      <p>No Arch:</p>
+<pre><code>sudo pacman -S jdk-openjdk</code></pre>
+
+      <h3>Passo 2 – Verificar</h3>
+<pre><code>java -version
+javac -version</code></pre>
+
+      <h3>Passo 3 – Compilar e executar</h3>
+      <p>1. Crie o arquivo <span class="inline-code">OlaMundo.java</span></p>
+      <p>2. No terminal:</p>
+<pre><code>cd ~/caminho/da/pasta
+javac OlaMundo.java
+java OlaMundo</code></pre>
+      <p>O processo é idêntico ao do Windows — só muda a forma de instalar o JDK.</p>
+    </section>
+
+    <!-- Web / Online -->
+    <section class="section">
+      <h2>3. Ambientes Online (sem instalar nada)</h2>
+      <p>
+        Perfeito para estudar rapidamente ou quando você não pode instalar programas no computador.
+      </p>
+
+      <h3>Opção A – OnlineGDB (recomendado para iniciantes)</h3>
+      <p>
+        1. Acesse <a href="https://www.onlinegdb.com/" target="_blank" rel="noopener">onlinegdb.com</a><br>
+        2. No canto superior direito, selecione a linguagem <strong>Java</strong><br>
+        3. Apague o código de exemplo e cole o seu<br>
+        4. Clique em <strong>Run</strong>
+      </p>
+      <p>Suporta entrada de dados pelo terminal (Scanner funciona normalmente).</p>
+
+      <h3>Opção B – Replit</h3>
+      <p>
+        1. Acesse <a href="https://replit.com/" target="_blank" rel="noopener">replit.com</a> e crie uma conta gratuita<br>
+        2. Clique em “Create Repl” → escolha <strong>Java</strong><br>
+        3. Escreva o código e pressione o botão de play
+      </p>
+
+      <h3>Opção C – JDoodle</h3>
+      <p>
+        Acesse <a href="https://www.jdoodle.com/online-java-compiler" target="_blank" rel="noopener">jdoodle.com/online-java-compiler</a>, 
+        cole o código e clique em Execute.
+      </p>
+
+      <h3>Comparação rápida</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Ambiente</th>
+            <th>Vantagem</th>
+            <th>Ideal para</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OnlineGDB</td>
+            <td>Simples e rápido</td>
+            <td>Exercícios rápidos</td>
+          </tr>
+          <tr>
+            <td>Replit</td>
+            <td>Projetos salvos na nuvem</td>
+            <td>Trabalhos maiores</td>
+          </tr>
+          <tr>
+            <td>JDoodle</td>
+            <td>Muito leve</td>
+            <td>Testes pontuais</td>
+          </tr>
+          <tr>
+            <td>JDK local</td>
+            <td>Mais rápido e completo</td>
+            <td>Estudo sério / projetos</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Dicas finais -->
+    <section class="section">
+      <h2>Dicas importantes</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="padding-left: 28px; position: relative; margin-bottom: 10px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          O nome do arquivo <strong>deve ser igual</strong> ao nome da classe pública (ex: classe <span class="inline-code">OlaMundo</span> → arquivo <span class="inline-code">OlaMundo.java</span>)
+        </li>
+        <li style="padding-left: 28px; position: relative; margin-bottom: 10px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          Java diferencia maiúsculas de minúsculas (<span class="inline-code">Main</span> ≠ <span class="inline-code">main</span>)
+        </li>
+        <li style="padding-left: 28px; position: relative; margin-bottom: 10px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          Depois de compilar, o arquivo <span class="inline-code">.class</span> é gerado. É ele que a JVM executa.
+        </li>
+        <li style="padding-left: 28px; position: relative; margin-bottom: 10px; color: var(--text-secondary);">
+          <span style="position: absolute; left: 0; color: var(--neon-cyan);">▹</span>
+          Se aparecer “comando não encontrado”, o Java não está no PATH. Reinstale marcando a opção correta ou configure manualmente.
+        </li>
+      </ul>
+    </section>
+
+    <div class="lesson-nav">
+      <a href="index.html" class="nav-btn">← Menu Principal</a>
+      <a href="aula1.html" class="nav-btn">Começar Aula 1 →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Tutorial • Algoritmos e Introdução à Programação Java</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
