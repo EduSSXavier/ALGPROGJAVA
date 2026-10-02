@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 5 · Coleções: Listas, Conjuntos e Mapas — Algoritmos &amp; Java</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="chrome-dots"><span></span><span></span><span></span></div>
+    <span class="brand"><strong>~/algoritmos-java</strong><span class="full">/Aula05.java</span></span>
+    <nav class="module-nav" aria-label="Navegação">
+      <a href="index.html">← Retornar ao Menu de Aulas</a>
+    </nav>
+  </div>
+</header>
+
+<div class="lesson-shell">
+  <aside class="lesson-toc">
+    <p class="lesson-toc-label">NESTA AULA</p>
+    <ol>
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#prerequisitos">Pré-requisitos</a></li>
+      <li><a href="#conteudo">Conteúdo da aula</a></li>
+      <li><a href="#cronograma">Cronograma</a></li>
+      <li><a href="#exercicios">Exercícios</a></li>
+      <li><a href="#materiais">Materiais</a></li>
+    </ol>
+  </aside>
+
+  <main class="lesson-main">
+    <p class="lesson-kicker">Aula 05 de 05</p>
+    <h1>Coleções em Java: Listas, Conjuntos e Mapas</h1>
+    <span class="duration-badge">⏱ 120 min</span>
+
+    <section class="block" id="objetivos">
+      <h2>Objetivos de aprendizagem</h2>
+      <p>Ao final da aula, o aluno deve ser capaz de:</p>
+      <ul class="plain">
+        <li>Criar e manipular listas de tamanho dinâmico com <code>ArrayList</code></li>
+        <li>Utilizar <code>HashSet</code> para garantir a unicidade de elementos</li>
+        <li>Utilizar <code>HashMap</code> para associar chaves e valores</li>
+        <li>Reconhecer <em>records</em> como a alternativa mais próxima de uma tupla imutável em Java</li>
+        <li>Escolher a estrutura certa (<code>List</code>, <code>Set</code> ou <code>Map</code>) para cada tipo de problema</li>
+      </ul>
+    </section>
+
+    <section class="block" id="prerequisitos">
+      <h2>Pré-requisitos</h2>
+      <p>Conteúdo das <a href="aula1.html">Aula 1</a> a <a href="aula4.html">Aula 4</a> (variáveis, condicionais, laços <code>while</code>/<code>for</code>, arrays e <code>for-each</code>).</p>
+    </section>
+
+    <section class="block" id="conteudo">
+      <h2>Conteúdo da aula</h2>
+
+      <h3>Do array ao ArrayList</h3>
+      <p>O array, visto na Aula 4, resolve bem o caso em que o tamanho da coleção é conhecido de antemão — mas seu tamanho é fixo desde a criação. Quando não se sabe quantos elementos serão guardados, o Java oferece o <strong>Java Collections Framework</strong>: um conjunto de classes prontas para trabalhar com coleções que crescem e encolhem dinamicamente.</p>
+      <p>A mais usada dessas classes é a <code>ArrayList&lt;E&gt;</code>, equivalente direta da <em>list</em> do Python: mantém a ordem de inserção, aceita elementos repetidos e cresce conforme necessário. O <code>&lt;E&gt;</code> é um <strong>genérico</strong> — indica o tipo dos elementos que a lista vai guardar (ex.: <code>ArrayList&lt;Double&gt;</code>, <code>ArrayList&lt;String&gt;</code>), garantindo que o compilador barre a inserção de um tipo incompatível.</p>
+      <div class="codeblock">
+        <div class="codeblock-head"><span>trecho ilustrativo</span></div>
+        <pre><code data-lang="java">// Antes (Aula 4): tamanho fixo, definido na criacao
+double[] notasArray = new double[5];
+
+// Agora: cresce conforme necessario
+ArrayList<Double> notas = new ArrayList<>();
+notas.add(8.5);
+notas.add(7.0);
+notas.remove(0);
+System.out.println(notas.size());</code></pre>
+      </div>
+      <p>Os métodos mais usados são <code>add()</code> (insere um elemento), <code>get(indice)</code> (lê pelo índice), <code>remove()</code> (remove por índice ou por valor) e <code>size()</code> (quantidade atual de elementos — o equivalente dinâmico do <code>length</code> do array).</p>
+
+      <h3>HashSet — unicidade de elementos</h3>
+      <p>Quando repetições não fazem sentido para o problema — como uma lista de nomes distintos ou de códigos já processados — a estrutura adequada é o <code>HashSet&lt;E&gt;</code>, equivalente ao <em>set</em> do Python: qualquer tentativa de adicionar um valor já existente é simplesmente ignorada, sem gerar erro.</p>
+      <table class="schedule">
+        <thead><tr><th>Estrutura</th><th>Permite repetição?</th><th>Mantém ordem de inserção?</th></tr></thead>
+        <tbody>
+          <tr><td class="tag">ArrayList</td><td>Sim</td><td>Sim</td></tr>
+          <tr><td class="tag">HashSet</td><td>Não</td><td>Não garante</td></tr>
+        </tbody>
+      </table>
+      <p>Os métodos principais são <code>add()</code> (insere, ignorando duplicados), <code>contains()</code> (verifica se um valor já está presente) e <code>remove()</code>.</p>
+
+      <h3>HashMap e a nota sobre tuplas</h3>
+      <p>Quando o problema é associar uma informação a outra — um nome a um telefone, um código a uma descrição — a estrutura certa é o <code>HashMap&lt;K, V&gt;</code>, equivalente ao <em>dict</em> do Python: cada valor (<code>V</code>) é guardado sob uma chave (<code>K</code>) única. Os métodos essenciais são <code>put(chave, valor)</code> (insere ou substitui), <code>get(chave)</code> (recupera o valor associado) e <code>containsKey()</code> (verifica se a chave existe antes de tentar recuperá-la).</p>
+      <p>Por fim, uma nota sobre a <em>tupla</em> do Python (agrupamento fixo e imutável de valores, geralmente de tipos diferentes): Java não tem uma sintaxe embutida equivalente, mas a alternativa idiomática mais próxima, desde o Java 16, é o <strong>record</strong> — uma forma compacta de declarar uma classe imutável para agrupar dados:</p>
+      <div class="codeblock">
+        <div class="codeblock-head"><span>trecho ilustrativo</span></div>
+        <pre><code data-lang="java">record Contato(String nome, String telefone) {}
+
+Contato c = new Contato("Ana", "71 99999-0001");
+System.out.println(c.nome() + " - " + c.telefone());</code></pre>
+      </div>
+    </section>
+
+    <section class="block" id="cronograma">
+      <h2>Cronograma detalhado</h2>
+      <div class="schedule-wrap">
+        <table class="schedule">
+          <thead><tr><th>Tempo</th><th>Bloco</th><th>Atividade</th></tr></thead>
+          <tbody>
+            <tr><td class="time">0–10 min</td><td class="tag">Revisão</td><td>Retomar array/<code>for-each</code> (Aula 4) e provocar: "e se eu não souber quantos elementos vou guardar?" — gancho para listas dinâmicas.</td></tr>
+            <tr><td class="time">10–30 min</td><td class="tag">Exposição</td><td>Java Collections Framework: por que existe além do array. <code>ArrayList&lt;E&gt;</code>: import, genérico <code>&lt;E&gt;</code>, <code>add()</code>, <code>get()</code>, <code>remove()</code>, <code>size()</code>.</td></tr>
+            <tr data-kind="pratica"><td class="time">30–50 min</td><td class="tag">Prática 1</td><td>Cadastrar notas digitadas pelo usuário em um <code>ArrayList&lt;Double&gt;</code> (sentinela -1 para parar) e exibir todas + a quantidade.</td></tr>
+            <tr><td class="time">50–65 min</td><td class="tag">Exposição</td><td><code>HashSet&lt;E&gt;</code>: unicidade automática, <code>add()</code>, <code>contains()</code>, <code>remove()</code>. Comparação com <code>List</code> (ordem e repetição).</td></tr>
+            <tr data-kind="pratica"><td class="time">65–85 min</td><td class="tag">Prática 2</td><td>Ler nomes até o usuário digitar "fim", guardar em <code>HashSet&lt;String&gt;</code> e informar quantos nomes distintos foram digitados.</td></tr>
+            <tr><td class="time">85–90 min</td><td class="tag">Pausa</td><td>—</td></tr>
+            <tr><td class="time">90–105 min</td><td class="tag">Exposição</td><td><code>HashMap&lt;K, V&gt;</code>: <code>put()</code>, <code>get()</code>, <code>containsKey()</code>. Nota de fechamento: <em>records</em> como alternativa à tupla.</td></tr>
+            <tr data-kind="pratica"><td class="time">105–120 min</td><td class="tag">Prática 3</td><td>Mini agenda de contatos: <code>HashMap&lt;String, String&gt;</code> associando nome → telefone, com consulta por nome digitado.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="exercicios">
+      <h2>Exercícios práticos</h2>
+
+      <div class="exercise">
+        <p class="exercise-label">EXERCÍCIO 1 — Lista dinâmica de notas</p>
+        <p>Ler notas digitadas até o usuário digitar <code>-1</code>, guardando em um <code>ArrayList&lt;Double&gt;</code>; ao final, exibir a lista e a quantidade.</p>
+        <button class="reveal-btn" aria-expanded="false" data-target="ans5-1">Ver resposta</button>
+        <div class="answer" id="ans5-1">
+          <div class="answer-inner">
+            <div class="codeblock">
+              <div class="codeblock-head"><span>ListaNotas.java</span></div>
+              <pre><code data-lang="java">import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListaNotas {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Double> notas = new ArrayList<>();
+
+        System.out.println("Digite notas (-1 para parar):");
+        double nota = scanner.nextDouble();
+        while (nota != -1) {
+            notas.add(nota);
+            nota = scanner.nextDouble();
+        }
+
+        System.out.println("Notas cadastradas: " + notas);
+        System.out.println("Quantidade: " + notas.size());
+    }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <p class="exercise-label">EXERCÍCIO 2 — Nomes únicos com HashSet</p>
+        <p>Ler nomes até o usuário digitar "fim"; armazenar em <code>HashSet&lt;String&gt;</code>; informar quantos nomes distintos foram digitados.</p>
+        <button class="reveal-btn" aria-expanded="false" data-target="ans5-2">Ver resposta</button>
+        <div class="answer" id="ans5-2">
+          <div class="answer-inner">
+            <div class="codeblock">
+              <div class="codeblock-head"><span>NomesUnicos.java</span></div>
+              <pre><code data-lang="java">import java.util.HashSet;
+import java.util.Scanner;
+
+public class NomesUnicos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        HashSet<String> nomes = new HashSet<>();
+
+        System.out.println("Digite nomes (\"fim\" para parar):");
+        String nome = scanner.nextLine();
+        while (!nome.equalsIgnoreCase("fim")) {
+            nomes.add(nome);
+            nome = scanner.nextLine();
+        }
+
+        System.out.println("Nomes distintos digitados: " + nomes.size());
+        System.out.println(nomes);
+    }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <p class="exercise-label">EXERCÍCIO 3 — Agenda de contatos com HashMap</p>
+        <p>Criar um <code>HashMap&lt;String, String&gt;</code> associando nome → telefone; consultar o telefone de um nome digitado pelo usuário.</p>
+        <button class="reveal-btn" aria-expanded="false" data-target="ans5-3">Ver resposta</button>
+        <div class="answer" id="ans5-3">
+          <div class="answer-inner">
+            <div class="codeblock">
+              <div class="codeblock-head"><span>AgendaContatos.java</span></div>
+              <pre><code data-lang="java">import java.util.HashMap;
+import java.util.Scanner;
+
+public class AgendaContatos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        HashMap<String, String> agenda = new HashMap<>();
+
+        agenda.put("Ana", "71 99999-0001");
+        agenda.put("Bruno", "71 99999-0002");
+        agenda.put("Carla", "71 99999-0003");
+
+        System.out.print("Digite um nome para consultar: ");
+        String nome = scanner.nextLine();
+
+        if (agenda.containsKey(nome)) {
+            System.out.println("Telefone: " + agenda.get(nome));
+        } else {
+            System.out.println("Contato nao encontrado.");
+        }
+    }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="materiais">
+      <h2>Materiais de apoio</h2>
+      <ul class="plain">
+        <li>Slides comparando <code>List</code> vs <code>Set</code> vs <code>Map</code> lado a lado (com equivalência às estruturas do Python)</li>
+        <li>Referência rápida da sintaxe genérica (<code>&lt;E&gt;</code>, <code>&lt;K, V&gt;</code>)</li>
+        <li>Esta página como roteiro de exercícios</li>
+      </ul>
+    </section>
+
+    <div class="lesson-footer">
+      <a href="aula4.html">← Aula anterior</a>
+      <button class="complete-btn" data-module="aula5">Marcar aula como concluída</button>
+      <a href="index.html">Voltar ao menu →</a>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  Material de estudo — Algoritmos e Introdução à Programação Java.
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
