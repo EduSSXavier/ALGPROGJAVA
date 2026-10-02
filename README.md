@@ -12,9 +12,8 @@ java-aulas/
 ├── aula3.html          # Repetição com while
 ├── aula4.html          # Repetição com for
 ├── como-executar.html  # Tutorial: Windows, Linux e Online
-├── css/
+├── assets/
 │   └── style.css
-├── js/
 │   └── main.js
 └── README.md
 ```
